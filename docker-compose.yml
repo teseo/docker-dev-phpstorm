@@ -1,3 +1,10 @@
+dbdata:
+  image: ubuntu:14.04
+  volumes:
+   - /dbdata:/dbdata
+  command: mkdir -p /webdata/data
+  container_name: dbdata
+
 mysql56:
   build: ./mysql56
   container_name: mysql56
@@ -6,7 +13,7 @@ mysql56:
   ports:
    - "9016:3306"
   volumes:
-   - /data:/var/lib/mysql
+   - /dbdata:/var/lib/mysql
 
 nginx:
   build: ./nginx
