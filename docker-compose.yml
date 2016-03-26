@@ -11,7 +11,7 @@ mysql56:
   environment:
    - MYSQL_ROOT_PASSWORD=mysql56secret
   ports:
-   - "9016:3306"
+   - "3306:3306"
   volumes:
    - /dbdata:/var/lib/mysql
 
@@ -24,7 +24,6 @@ nginx:
    - /Users/javi/Documents/workspace/PhpstormProjects:/usr/share/nginx/html
   links:
    - php56
-   - php70
 
 php56:
   build: ./php56
@@ -36,18 +35,6 @@ php56:
   links:
    - mysql56
    - redis
-
-php70:
-  build: ./php70
-  container_name: php70
-  ports:
-   - "9070:9000"
-  volumes:
-   - /Users/javi/Documents/workspace/PhpstormProjects:/var/www/html
-  links:
-   - mysql56
-   - redis
-
 redis:
   image: redis
   container_name: redis 
