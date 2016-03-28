@@ -7,7 +7,7 @@ mysql56:
   ports:
    - "3306:3306"
   volumes:
-   - ${PWD}/dbdata:/var/lib/mysql
+   - ${PWD}/dbdata:/var/lib/mysql:rw
 nginx:
   build: ./nginx
   container_name: nginx
