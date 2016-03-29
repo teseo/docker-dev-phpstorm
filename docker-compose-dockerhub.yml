@@ -1,0 +1,34 @@
+mysql56:
+  image: teseo/docker_mysql56
+  container_name: mysql56
+  environment:
+   - MYSQL_ROOT_PASSWORD=mysql56secret
+  ports:
+   - "3306:3306"
+  volumes:
+   - ${PWD}/dbdata:/var/lib/mysql:rw
+nginx:
+  image: teseo/docker_nginx
+  container_name: nginx
+  ports:
+   - "80:80"
+  volumes:
+   - /Users/javi/Documents/workspace/PhpstormProjects:/usr/share/nginx/html
+  links:
+   - php56
+
+php56:
+  image: teseo/docker_php56
+  container_name: php56
+  ports:
+   - "9056:9000"
+  volumes:
+   - /Users/javi/Documents/workspace/PhpstormProjects:/var/www/html
+  links:
+   - mysql56
+   - redis
+redis:
+  image: redis
+  container_name: redis
+  ports:
+   - "6379"

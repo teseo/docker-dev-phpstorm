@@ -30,6 +30,6 @@ php56:
    - redis
 redis:
   image: redis
-  container_name: redis 
+  container_name: redis
   ports:
    - "6379"
